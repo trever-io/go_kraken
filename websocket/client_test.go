@@ -892,7 +892,7 @@ func TestClient_close(t *testing.T) {
 				}()
 			}
 
-			c.close(tt.args.e)
+			c.close()
 		})
 	}
 }
