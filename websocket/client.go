@@ -470,7 +470,10 @@ func (c *Client) handleTradeOrOrder(msg []byte, err error) error {
 				return err
 			}
 
-			c.listener <- result
+			c.listener <- DataUpdate {
+                ChannelName: "ownTrades",
+                Data: result,
+            }
 			return nil
 		} else if v[1] == "openOrders" {
 			result, err := json.Marshal(v[0])
@@ -478,7 +481,10 @@ func (c *Client) handleTradeOrOrder(msg []byte, err error) error {
 				return err
 			}
 
-			c.listener <- result
+			c.listener <- DataUpdate {
+                ChannelName: "openOrders",
+                Data: result,
+            }
 			return nil
 		}
 	}
