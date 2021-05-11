@@ -50,6 +50,10 @@ func NewAuth(key, secret string) *AuthClient {
 	return c
 }
 
+func (c *AuthClient) SetParameters(params *Parameters) {
+    c.Client.parameters = params
+}
+
 func (c *AuthClient) createAuthFactories() {
 	c.createFactory(ChanOwnTrades, newOwnTradesFactory())
 	c.createFactory(ChanOpenOrders, newOpenOrdersFactory())
